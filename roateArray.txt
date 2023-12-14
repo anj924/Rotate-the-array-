@@ -1,0 +1,43 @@
+import java.util.ArrayList;
+
+public class RoateArray {
+    public static void rotateOne(ArrayList<Integer> list) {
+        int n = list.size();
+        int temp = list.get(0);
+        for (int i = 1;i<n;i++) {
+            list.set(i-1, list.get(i ));
+        }
+        list.set(n-1, temp);
+    }
+
+    public static void rotateArray(ArrayList<Integer> list, int k) {
+        k = k % list.size();
+        if (k < 0) {
+            k = k + list.size();
+        } else {
+            for (int i = 0; i < k; i++) {
+                rotateOne(list);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Integer> myList = new ArrayList<>();
+
+        // Add some elements to the ArrayList
+        myList.add(1);
+        myList.add(2);
+        myList.add(3);
+        myList.add(4);
+        myList.add(5);
+
+        System.out.println("Original List: " + myList);
+
+        // Rotate the array by 2 positions  
+        rotateArray(myList, 3);
+
+        System.out.println("Rotated List: " + myList);
+    }
+}
+
+           
